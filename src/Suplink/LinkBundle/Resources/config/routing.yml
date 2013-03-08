@@ -1,0 +1,38 @@
+suplink_link_generatepage:
+    pattern:  /{slug}
+    defaults: { _controller: SuplinkLinkBundle:Default:index }
+
+suplink_link_dashboardpage:
+    pattern:  /dashboard/index
+    defaults: { _controller: SuplinkLinkBundle:Dashboard:index }
+
+link:
+    pattern:  /dashboard/link
+    defaults: { _controller: "SuplinkLinkBundle:Link:index" }
+
+link_show:
+    pattern:  /dashboard/link/{id}/show
+    defaults: { _controller: "SuplinkLinkBundle:Link:show" }
+
+link_new:
+    pattern:  /dashboard/link/new
+    defaults: { _controller: "SuplinkLinkBundle:Link:new" }
+
+link_create:
+    pattern:  /dashboard/link/create
+    defaults: { _controller: "SuplinkLinkBundle:Link:create" }
+    requirements: { _method: post }
+
+link_edit:
+    pattern:  /dashboard/link/{id}/edit
+    defaults: { _controller: "SuplinkLinkBundle:Link:edit" }
+
+link_update:
+    pattern:  /dashboard/link/{id}/update
+    defaults: { _controller: "SuplinkLinkBundle:Link:update" }
+    requirements: { _method: post }
+
+link_delete:
+    pattern:  /dashboard/link/{id}/delete
+    defaults: { _controller: "SuplinkLinkBundle:Link:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,94 @@
+{% extends 'SuplinkHomeBundle:Default:layout.html.twig' %}
+{% block menu %}
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="brand" href="{{ path('_welcome') }}"><img src="{{ asset('img/logo.png') }}" alt="Suplink" width="160" height="46"></a>
+	      <div class="nav-collapse">
+	        <ul class="nav actions">
+	        	{% if is_expr_granted("hasRole('ROLE_USER')") %}      	
+				<li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
+				{% else %}
+	        	<li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+	        	<li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>				    
+	        	{% endif %}
+				<li><a href="{{ path('suplink_home_aboutpage') }}">About</a></li>
+	        </ul>
+	        <ul class="nav">
+	        	{% if is_expr_granted("hasRole('ROLE_USER')") %}
+                <li>Connected with : {{ user.username }} </li>
+	        	{% endif %}
+	        </ul>
+	      </div><!--/.nav-collapse -->
+	    </div>
+	  </div>
+	</div>
+{% endblock %}
+{% block body %}
+<div class="row-fluid">
+<div class="row-fluid">
+	<div class="span9">
+			<h1>SupLink -Another Url Shortener</h1>
+	</div>
+</div>
+    <div class="clear"></div>
+    {% render 'SuplinkLinkBundle:Link:new' %}
+	<div class="clear"></div>
+    <h2>Your Links</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Original Url</th>
+            <th>Tiny Url</th>
+            <th>Clicks</th>
+            <th>Date Created</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+
+            {% if entity.active == 1 %}
+            <tr class="success">
+            {% else %}
+            <tr class="error">
+            {% endif %}
+                <td>{{ entity.name }}</td>
+                <td><a href="http://{{ entity.originalUrl }} ">http://{{ entity.originalUrl }}</a></td>
+                <td><a href="{{ url('suplink_home_homepage') }}{{ entity.tinyUrl }}">{{ url('suplink_home_homepage') }}{{ entity.tinyUrl }}</a></td>
+                <td>{{ entity.statistic }}</td>
+                <td>{% if entity.dateCreated %}{{ entity.dateCreated|date('d-m-Y') }}{% endif %}</td>
+                <td>
+                    {% if entity.active == 1 %}
+                        <img src="{{ asset('img/online.png') }}" alt="online" width="64" height="64">
+                         <spans>OnLine</span>
+                    {% else %}
+                        <img src="{{ asset('img/offline.png') }}" alt="offline" width="64" height="64">
+                         <span>Offline</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <ul class="nav nav-list">
+                        <li>
+                            <a href="{{ path('link_edit', { 'id': entity.id }) }}"class="btn"><i class="icon-pencil"></i> Edit / <i class="icon-trash"></i> Delete</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('link_show', { 'id': entity.id }) }}" class="btn"><i class="icon-search"></i> Statistics</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block javascripts %}{% endblock %}

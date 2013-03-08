@@ -1,0 +1,7 @@
+parameters:
+#    suplink_home.example.class: Suplink\HomeBundle\Example
+
+services:
+#    suplink_home.example:
+#        class: %suplink_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,7 @@
+suplink_home_homepage:
+    pattern:  /
+    defaults: { _controller: SuplinkHomeBundle:Default:index }
+
+suplink_home_aboutpage:
+    pattern:  /pages/about
+    defaults: { _controller: SuplinkHomeBundle:Default:about }

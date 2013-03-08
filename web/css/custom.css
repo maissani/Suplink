@@ -1,0 +1,20 @@
+.table tbody tr.success > td {
+    background-color: #dff0d8;
+}
+
+.table tbody tr.error > td {
+    background-color: #f2dede;
+}
+
+#suplink_linkbundle_linktype{
+    display: inline-block;
+}
+
+#suplink_linkbundle_linktype div{
+    display: inline-block;
+}
+
+#suplink_linkbundle_linktype label{
+    margin-left: 10px;
+    margin-right: 10px;
+}

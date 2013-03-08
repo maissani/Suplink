@@ -1,0 +1,17 @@
+{% extends 'SuplinkHomeBundle:Default:layout.html.twig' %}
+
+{% block title %}
+	{{ block('fos_user_title') }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ block('fos_user_stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ block('fos_user_javascripts') }}
+{% endblock %}
+
+{% block body %}
+    {{ block('fos_user_content') }}
+{% endblock %}

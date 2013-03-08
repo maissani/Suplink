@@ -1,0 +1,45 @@
+{% extends 'SuplinkHomeBundle:Default:layout.html.twig' %}
+{% block menu %}
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="brand" href="{{ path('_welcome') }}"><img src="{{ asset('img/logo.png') }}" alt="Suplink" width="160" height="46"></a>
+	      <div class="nav-collapse">
+	        <ul class="nav actions">
+	        	{% if is_expr_granted("hasRole('ROLE_USER')") %}
+				<li><a href="{{ path('suplink_link_dashboardpage') }}">Dashboard</a></li>
+				<li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
+				{% else %}
+	        	<li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+	        	<li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>				    
+	        	{% endif %}
+				<li><a href="{{ path('suplink_home_aboutpage') }}">About</a></li>
+	        </ul>
+	        <ul class="nav">
+	        	{% if is_expr_granted("hasRole('ROLE_USER')") %}
+	        	<li>Connected with : {{ user.username }} </li>
+	        	{% endif %}
+	        </ul>
+	      </div><!--/.nav-collapse -->
+	    </div>
+	  </div>
+	</div>
+{% endblock %}
+{% block body %}
+<div class="row-fluid">
+<div class="row-fluid">
+	<div class="span9">
+			<h1>SupLink -Another Url Shortener</h1>
+	</div>
+</div>
+	
+	<div class="clear"></div>
+	You can also see statisticsby speacker or by campus.
+</div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
