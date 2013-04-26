@@ -3,6 +3,8 @@ SupLink
 
 This is a free Url Shortener for people who wanted to know how it works or using it for free.
 
+This app is not under developpement yet.
+
 This app is under public license and works with symfony2 you can copy,and modify it.
 
 Cordialy Mehdi Aissani
